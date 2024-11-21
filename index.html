@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GreenLoop - Recycling</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Main Container -->
+    <div id="app">
+        <!-- Application Header -->
+        <header>
+            <h1>GreenLoop</h1>
+        </header>
+
+        <!-- Authentication Screens -->
+        <div id="auth-container" class="container">
+            <!-- Login Screen -->
+            <div id="login-screen" class="auth-screen">
+                <h2>Login</h2>
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button id="login-button">Login</button>
+                <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+                <div id="login-error" class="error"></div>
+            </div>
+            <!-- Signup Screen -->
+            <div id="signup-screen" class="auth-screen">
+                <h2>Sign Up</h2>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button id="signup-button">Sign Up</button>
+                <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+                <div id="signup-error" class="error"></div>
+            </div>
+        </div>
+
+        <!-- Main App Screens -->
+        <div id="main-container" class="container hidden">
+            <!-- Navigation -->
+            <nav>
+                <ul>
+                    <li><a href="#" data-screen="home">Home</a></li>
+                    <li><a href="#" data-screen="guide">Recycling Guide</a></li>
+                    <li><a href="#" data-screen="impact">Impact Tracker</a></li>
+                    <li><a href="#" data-screen="rewards">Rewards</a></li>
+                    <li><a href="#" data-screen="history">History</a></li>
+                    <li><a href="#" data-screen="admin" id="admin-link" class="hidden">Admin</a></li>
+                </ul>
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown">
+                    <img id="nav-profile-pic" src="default-profile.png" alt="Profile Picture">
+                    <div class="dropdown-content hidden" id="profile-dropdown-content">
+                        <a href="#" id="settings-link">Settings</a>
+                        <a href="#" id="logout-button">Logout</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Screens -->
+            <div id="home-screen" class="app-screen">
+                <h2>Welcome to GreenLoop!</h2>
+                <p id="welcome-message"></p>
+                <p>Current Badge: <span id="current-badge">None</span></p>
+                <p>Total Points: <span id="total-points">0</span></p>
+                <!-- Log Recycling Activity Form -->
+                <h3>Log Recycling Activity</h3>
+                <form id="activity-form">
+                    <label for="activity-date">Date:</label>
+                    <input type="date" id="activity-date" required>
+                    <label for="activity-time">Time:</label>
+                    <input type="time" id="activity-time" required>
+                    <label for="activity-amount">Amount Recycled (gallons):</label>
+                    <input type="number" id="activity-amount" min="0" step="0.1" required>
+                    <label for="activity-photo">Upload Photo (optional):</label>
+                    <input type="file" id="activity-photo" accept="image/*">
+                    <button type="submit">Submit</button>
+                </form>
+                <div id="activity-error" class="error"></div>
+            </div>
+
+            <div id="guide-screen" class="app-screen hidden">
+                <h2>Recycling Guide</h2>
+                <h3 class="subheader">These are some tips that will be a guideline on what is recycling</h3>
+                <ul id="recycling-tips-list"></ul>
+            </div>
+
+            <div id="impact-screen" class="app-screen hidden">
+                <h2>Your Impact Over Time</h2>
+                <div class="chart-container">
+                    <canvas id="impact-chart"></canvas>
+                </div>
+            </div>
+
+            <div id="rewards-screen" class="app-screen hidden">
+                <h2>Rewards</h2>
+                <p>Earn points by logging your recycling activities!</p>
+                <ul id="rewards-list"></ul>
+                <h3>Cash Award</h3>
+                <p>The top recycler will receive a $5000 cash at the end of the year!</p>
+            </div>
+
+            <!-- History Screen -->
+            <div id="history-screen" class="app-screen hidden">
+                <h2>Activity History</h2>
+                <!-- Summary -->
+                <div id="history-summary"></div>
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Amount Recycled (gallons)</th>
+                            <th>Points Earned</th>
+                            <th>Photo</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Settings Screen -->
+            <div id="settings-screen" class="app-screen hidden">
+                <h2>Profile Settings</h2>
+                <form id="settings-form">
+                    <!-- Profile Picture -->
+                    <label for="settings-profile-pic">Profile Picture:</label>
+                    <input type="file" id="settings-profile-pic" accept="image/*">
+                    <img id="current-profile-pic" src="default-profile.png" alt="Current Profile Picture">
+
+                    <!-- Username -->
+                    <label for="settings-username">Username:</label>
+                    <input type="text" id="settings-username" placeholder="Enter your username">
+
+                    <!-- Student Email -->
+                    <label for="settings-student-email">Student Email (optional):</label>
+                    <input type="email" id="settings-student-email" placeholder="Enter your student email">
+
+                    <!-- Registered Email -->
+                    <label>Email (registered):</label>
+                    <p id="settings-email"></p>
+
+                    <!-- Change Password -->
+                    <label for="settings-password">Change Password:</label>
+                    <input type="password" id="settings-password" placeholder="Enter new password">
+                    <button type="submit">Save Changes</button>
+                </form>
+                <div id="settings-error" class="error"></div>
+            </div>
+
+            <!-- Admin Screen -->
+            <div id="admin-screen" class="app-screen hidden">
+                <h2>Admin Dashboard</h2>
+                <h3>Users</h3>
+                <table id="users-table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Points</th>
+                            <th>Activities Logged</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <h3>Recycling Bins Status</h3>
+                <table id="bins-table">
+                    <thead>
+                        <tr>
+                            <th>Bin ID</th>
+                            <th>Fill Level (%)</th>
+                            <th>Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <!-- Error Message -->
+            <div id="main-error" class="error"></div>
+        </div>
+
+        <!-- Image Popup Modal -->
+        <div id="image-modal" class="modal hidden">
+            <span id="modal-close">&times;</span>
+            <img id="modal-image" class="modal-content" src="" alt="Activity Image">
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

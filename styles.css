@@ -1,0 +1,323 @@
+/* styles.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
+}
+
+/* Application Header */
+header {
+    background-color: #28a745;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Authentication Screens */
+.auth-screen {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.auth-screen input {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+}
+
+.auth-screen button {
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+.auth-screen a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.auth-screen a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation */
+nav {
+    background-color: #28a745;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 5px 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-dropdown img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.profile-dropdown .dropdown-content a {
+    color: black;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+}
+
+.profile-dropdown .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown on hover */
+.profile-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* App Screens */
+.app-screen {
+    margin-top: 20px;
+}
+
+/* Subheader */
+.subheader {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Recycling Tips */
+#recycling-tips-list {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Impact Chart */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+#impact-chart {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Rewards List */
+#rewards-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#rewards-list li {
+    padding: 10px;
+    background-color: #f8f9fa;
+    margin-bottom: 10px;
+}
+
+/* Highlight Current Badge */
+.current-badge {
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #e9ecef;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+    color: #fff;
+}
+
+/* Error Messages */
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Activity Form */
+#activity-form {
+    margin-top: 20px;
+}
+
+#activity-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+#activity-form input[type="date"],
+#activity-form input[type="time"],
+#activity-form input[type="number"],
+#activity-form input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 0px;
+    margin-top: 5px;
+}
+
+#activity-form button {
+    margin-top: 15px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+#modal-close {
+    position: absolute;
+    top: 30px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-close:hover,
+#modal-close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Delete Button */
+.delete-button {
+    color: #dc3545;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    text-decoration: underline;
+}
+
+/* Settings Form */
+#settings-form {
+    margin-top: 20px;
+}
+
+#settings-form label {
+    display: block;
+    margin-top: 10px;
+}
+
+#settings-form input[type="text"],
+#settings-form input[type="email"],
+#settings-form input[type="password"],
+#settings-form input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+#settings-form button {
+    margin-top: 15px;
+}
+
+#current-profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+/* History Summary */
+#history-summary {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
